@@ -19,8 +19,7 @@ module.exports = {
         embed.setColor("#00FFFB");
         embed.setAuthor(`${functions.branch} Hilfe`);
         embed.setDescription(`You can use this commands with ${functions.branch}. Just type in ${functions.prefix}[command]! For help with a Special Command type in ${functions.prefix}help [command]`);
-        embed.addField("Normal Commands", `ping\nhelp`, true);
-        embed.addField("Musik Commands", "play\nskip\nstop\nclear\nqueue", true);
+        embed.addField("Commands", "help\nping\nplay\nskip\nstop\nclear\nqueue", true);
 
 
         embed.setFooter(`${functions.branch} by JPlexer ${functions.botver}`);
