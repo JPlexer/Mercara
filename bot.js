@@ -11,9 +11,7 @@ const music = require("./modules/music.js")
 
 client.on('ready', () => {
   console.log('Ready!')
-  client.setInterval(setGamef, 30000, client);
   setGamef(client);
-  usef.clstart();
 });
 
 client.login(process.env.BOT_TOKEN);
