@@ -8,6 +8,6 @@ module.exports = {
     });
   },
   prefix: "m:",
-  botver: "v.1.0.3",
+  botver: "v.1.0.4",
   branch: "Mercara",
 }

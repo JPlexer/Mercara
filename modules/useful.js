@@ -17,7 +17,7 @@ module.exports = {
     help: function (message) {
         embed = new Discord.RichEmbed();
         embed.setColor("#00FFFB");
-        embed.setAuthor(`${functions.branch} Hilfe`);
+        embed.setAuthor(`${functions.branch} Help`);
         embed.setDescription(`You can use this commands with ${functions.branch}. Just type in ${functions.prefix}[command]! For help with a Special Command type in ${functions.prefix}help [command]`);
         embed.addField("Commands", "help\nping\nplay\nskip\nstop\nclear\nqueue", true);
 
