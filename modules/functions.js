@@ -8,6 +8,6 @@ module.exports = {
     });
   },
   prefix: "mb:",
-  botver: "b.1.0.6",
+  botver: "b.1.0.7",
   branch: "Merbara",
 }
