@@ -7,7 +7,7 @@ module.exports = {
       type: "LISTENING"
     });
   },
-  prefix: "mb:",
-  botver: "b.1.0.7",
-  branch: "Merbara",
+  prefix: "mc:",
+  botver: "v.1.0.7",
+  branch: "Mercara",
 }
