@@ -44,7 +44,7 @@ client.on('message', message => {
     usef.help(message);
 
   } else if (lc.startsWith(`${prefix}eval`)) {
-    if (lc.includes(token)) {
+    if (lc.includes(`token`)) {
       message.reply(`No Never Ever!`);
       return true;
     } else {
