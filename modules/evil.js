@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 
 module.exports = function (client, message, args2) {
-    if (message.author.id != 348065394520621067) return message.channel.send("**Hey, " + message.author.username + " das kann nur JPlexer Benutzen!**");
+    if (message.author.id != 348065394520621067) return message.channel.send("**Hey " + message.author.username + ", only JPlexer can use that!**");
 
     const clean = text => {
         if (typeof (text) === "string")
