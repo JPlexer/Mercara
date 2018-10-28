@@ -32,5 +32,6 @@ module.exports = {
         message.delete();
         if (message.author.id != 348065394520621067) return message.channel.send("**Hey " + message.author.username + ", only JPlexer can use that!**");
         message.channel.send(args2)
+        .catch(error => message.channel.send(`Error: ${error}`));
     }
 }
