@@ -29,9 +29,11 @@ module.exports = {
         return true;
     },
     say: async function (message, args2) {
-        message.delete();
         if (message.author.id != 348065394520621067) return message.channel.send("**Hey " + message.author.username + ", only JPlexer can use that!**");
-        message.channel.send(args2)
+        if(!message.member.hasPermission("MANAGE_MESSAGE")) return message.channel.send("**Hey " + message.author.username + ", i cant do that**");
+        let botmessage = args2.join(" ");
+        message.delete().catch();
+        message.channel.send(botmessage)
         .catch(error => message.channel.send(`Error: ${error}`));
     }
 }
