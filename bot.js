@@ -42,8 +42,8 @@ client.on('message', message => {
 
   } else if (lc === `${prefix}help`) {
     usef.help(message);
-    
-  } else if (lc === `${prefix}help`) {
+
+  } else if (lc === `${prefix}say`) {
     usef.say(message);
 
   } else if (lc.startsWith(`${prefix}eval`)) {
