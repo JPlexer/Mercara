@@ -27,5 +27,10 @@ module.exports = {
             embed
         });
         return true;
+    },
+    say: async function (message, args2) {
+        message.delete();
+        if (message.author.id != 348065394520621067) return message.channel.send("**Hey " + message.author.username + ", only JPlexer can use that!**");
+        message.channel.send(args2)
     }
 }
