@@ -44,7 +44,7 @@ client.on('message', message => {
     usef.help(message);
 
   } else if (lc === `${prefix}say`) {
-    usef.say(message, args2);
+    usef.say(message, args);
 
   } else if (lc.startsWith(`${prefix}eval`)) {
     if (lc.includes(`token`)) {
