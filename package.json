@@ -1,7 +1,7 @@
 {
   "name": "mercara",
   "description": "A good bot",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "main": "bot.js",
 
   "scripts": {
@@ -10,11 +10,7 @@
   "dependencies": {
     "discord.js": "11.3.2",
     "request": "2.81.0",
-    "youtube-info": "^1.1.1",
-    "ffmpeg-binaries": "^3.2.2-3",
     "fs": "0.0.1-security",
-    "get-youtube-id": "^1.0.0",
-    "opusscript": "0.0.3",
-    "ytdl-core": "^0.21.1"
+    "enmap": "14.4.2"
   }
 }

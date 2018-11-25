@@ -1,2 +1,3 @@
 # Mercara
-A cool Music BOT
+
+### A bot by JPlexer.
