@@ -11,6 +11,6 @@
     "discord.js": "11.3.2",
     "request": "2.81.0",
     "fs": "0.0.1-security",
-    "enmap": "14.4.2"
+    "enmap": "4.4.2"
   }
 }
