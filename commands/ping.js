@@ -1,4 +1,4 @@
-exports.run = (message) => {
+exports.run = (message, Discord) => {
     embed = new Discord.RichEmbed();
     embed.setColor("#00FFFB");
     embed.setAuthor(`${functions.branch} Ping`);
