@@ -11,6 +11,9 @@
     "discord.js": "11.3.2",
     "request": "2.81.0",
     "fs": "0.0.1-security",
-    "enmap": "4.4.2"
+    "enmap": "4.4.2",
+    "chalk": "2.4.1",
+    "moment": "2.22.2",
+    "util": "0.11.1"
   }
 }
