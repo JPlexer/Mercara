@@ -15,7 +15,7 @@ fs.readdir("./events/", (err, files) => {
   });
 });
 
-client.on(ready);
+client.on("ready", () => console.log);
 
 client.commands = new Enmap();
 
