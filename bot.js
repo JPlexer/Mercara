@@ -1,5 +1,7 @@
 const Discord = require("discord.js");
-const { promisify } = require("util");
+const {
+  promisify
+} = require("util");
 const readdir = promisify(require("fs").readdir);
 const Enmap = require("enmap");
 
@@ -13,8 +15,6 @@ require("./modules/functions.js")(client);
 
 client.commands = new Enmap();
 client.aliases = new Enmap();
-
-client.settings = new Enmap({name: "settings"});
 
 const init = async () => {
   const cmdFiles = await readdir("./commands/");
@@ -32,15 +32,15 @@ const init = async () => {
     client.logger.log(`Loading Event: ${eventName}`);
     const event = require(`./events/${file}`);
     client.on(eventName, event.bind(null, client));
-});
+  });
 
- client.levelCache = {};
- for (let i = 0; i < client.config.permLevels.length; i++) {
-   const thisLevel = client.config.permLevels[i];
-   client.levelCache[thisLevel.name] = thisLevel.level;
- }
+  client.levelCache = {};
+  for (let i = 0; i < client.config.permLevels.length; i++) {
+    const thisLevel = client.config.permLevels[i];
+    client.levelCache[thisLevel.name] = thisLevel.level;
+  }
 
- client.login(client.config.token);
+  client.login(client.config.token);
 };
 
 init();
