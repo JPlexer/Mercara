@@ -16,6 +16,11 @@
     "moment": "^2.22.2",
     "util": "^0.11.1",
     "better-sqlite-pool": "^0.1.2",
-    "moment-duration-format": "^2.2.0"
+    "moment-duration-format": "^2.2.0",
+    "youtube-info": "^1.1.1",
+    "ffmpeg-binaries": "^3.2.2-3",
+    "get-youtube-id": "^1.0.0",
+    "opusscript": "0.0.3",
+    "ytdl-core": "^0.21.1"
   }
 }
