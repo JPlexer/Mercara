@@ -19,13 +19,9 @@ exports.run = (client, message, args, level) => {
       let command = args[0];
       if (client.commands.has(command)) {
         command = client.commands.get(command);
-        message.channel.send(`= ${command.help.name} = \n${command.help.description}\nusage:: ${command.help.usage}\naliases:: ${command.conf.aliases.join(", ")}\n= ${command.help.name} =`, {code:"asciidoc"});
+        message.channel.send(`= ${command.help.name} = \n${command.help.description}\nusage: ${command.help.usage}\n= ${command.help.name} =`, {code:"asciidoc"});
       }
     }
-  };
-
-  exports.conf = {
-    aliases: ["h", "halp"]
   };
 
   exports.help = {

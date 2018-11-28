@@ -11,10 +11,6 @@ exports.run = async (client, message, args) => {
     }
 };
 
-exports.conf = {
-    aliases: ["exec"]
-  };
-
 exports.help = {
     name: "eval",
     category: "System",
