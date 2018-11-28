@@ -17,17 +17,6 @@ require("./modules/functions.js")(client);
 client.commands = new Enmap();
 client.aliases = new Enmap();
 
-  if (!guild[message.guild.id]) {
-    guild[message.guild.id] = {
-      queue: [],
-      queueNames: [],
-      isPlaying: false,
-      dispatcher: null,
-      voiceChannel: null,
-      skipReq: 0,
-      skippers: []
-    };
-  };
 
 const init = async () => {
   const cmdFiles = await readdir("./commands/");
@@ -36,6 +25,17 @@ const init = async () => {
     if (!f.endsWith(".js")) return;
     const response = client.loadCommand(f);
     if (response) console.log(response);
+    if (!guild[message.guild.id]) {
+      guild[message.guild.id] = {
+        queue: [],
+        queueNames: [],
+        isPlaying: false,
+        dispatcher: null,
+        voiceChannel: null,
+        skipReq: 0,
+        skippers: []
+      };
+    };  
   });
 
   const evtFiles = await readdir("./events/");
