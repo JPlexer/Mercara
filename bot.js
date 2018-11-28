@@ -25,17 +25,7 @@ const init = async () => {
     if (!f.endsWith(".js")) return;
     const response = client.loadCommand(f);
     if (response) console.log(response);
-    if (!guild[message.guild.id]) {
-      guild[message.guild.id] = {
-        queue: [],
-        queueNames: [],
-        isPlaying: false,
-        dispatcher: null,
-        voiceChannel: null,
-        skipReq: 0,
-        skippers: []
-      };
-    };  
+
   });
 
   const evtFiles = await readdir("./events/");
@@ -48,6 +38,17 @@ const init = async () => {
   });
 
   client.login(client.config.token);
+  if (!guild[message.guild.id]) {
+    guild[message.guild.id] = {
+      queue: [],
+      queueNames: [],
+      isPlaying: false,
+      dispatcher: null,
+      voiceChannel: null,
+      skipReq: 0,
+      skippers: []
+    };
+  };  
 };
 
 init();
