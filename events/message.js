@@ -4,10 +4,23 @@
 
 module.exports = async (client, message) => {
   if (message.author.bot) return;
+  const guild = {};
 
   const prefixMention = new RegExp(`^<@!?${client.user.id}>( |)$`);
   if (message.content.match(prefixMention)) {
     return message.reply(`My prefix is \`${client.config.prefix}\``);
+  }
+
+  if (!guild[message.guild.id]) {
+    guilds[message.guild.id] = {
+      queue: [],
+      queueNames: [],
+      isPlaying: false,
+      dispatcher: null,
+      voiceChannel: null,
+      skipReq: 0,
+      skippers: []
+    };
   }
 
   if (message.content.indexOf(client.config.prefix) !== 0) return;

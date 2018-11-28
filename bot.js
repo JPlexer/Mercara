@@ -38,17 +38,6 @@ const init = async () => {
   });
 
   client.login(client.config.token);
-  if (!guild[message.guild.id]) {
-    guild[message.guild.id] = {
-      queue: [],
-      queueNames: [],
-      isPlaying: false,
-      dispatcher: null,
-      voiceChannel: null,
-      skipReq: 0,
-      skippers: []
-    };
-  };  
 };
 
 init();
