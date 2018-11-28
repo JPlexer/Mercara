@@ -1,6 +1,6 @@
-exports.run = (client, message, guilds, args) => {
-    guilds[message.guild.id].queue.length = 0;
-    guilds[message.guild.id].dispatcher.end();
+exports.run = (client, message, guild, args) => {
+    guild[message.guild.id].queue.length = 0;
+    guild[message.guild.id].dispatcher.end();
     message.reply(' stopped the Music!')
   };
 

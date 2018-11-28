@@ -87,35 +87,35 @@ module.exports = (client) => {
       return false;
     };
 
-    client.skip_song = function (message, guilds) {
-      guilds[message.guild.id].dispatcher.end();
+    client.skip_song = function (message, guild) {
+      guild[message.guild.id].dispatcher.end();
     },
   
-    client.playMusic = function (id, message, guilds) {
-      guilds[message.guild.id].voiceChannel = message.member.voiceChannel;
+    client.playMusic = function (id, message, guild) {
+      guild[message.guild.id].voiceChannel = message.member.voiceChannel;
   
   
   
-      guilds[message.guild.id].voiceChannel.join().then(connection => {
+      guild[message.guild.id].voiceChannel.join().then(connection => {
         stream = ytdl(`https://www.youtube.com/watch?v=${id}`, );
-        guilds[message.guild.id].skipReq = 0;
-        guilds[message.guild.id].skippers = [];
+        guild[message.guild.id].skipReq = 0;
+        guild[message.guild.id].skippers = [];
   
-        guilds[message.guild.id].dispatcher = connection.playStream(stream);
-        guilds[message.guild.id].dispatcher.on('end', () => {
-          guilds[message.guild.id].skipReq = 0;
-          guilds[message.guild.id].skippers = [];
-          guilds[message.guild.id].queue.shift();
-          guilds[message.guild.id].queueNames.shift();
-          if (guilds[message.guild.id].queue.length === 0) {
-            guilds[message.guild.id].queue = [];
-            guilds[message.guild.id].queueNames = [];
-            guilds[message.guild.id].newsongs = [];
-            guilds[message.guild.id].isPlaying = false;
-            guilds[message.guild.id].voiceChannel.leave();
+        guild[message.guild.id].dispatcher = connection.playStream(stream);
+        guild[message.guild.id].dispatcher.on('end', () => {
+          guild[message.guild.id].skipReq = 0;
+          guild[message.guild.id].skippers = [];
+          guild[message.guild.id].queue.shift();
+          guild[message.guild.id].queueNames.shift();
+          if (guild[message.guild.id].queue.length === 0) {
+            guild[message.guild.id].queue = [];
+            guild[message.guild.id].queueNames = [];
+            guild[message.guild.id].newsongs = [];
+            guild[message.guild.id].isPlaying = false;
+            guild[message.guild.id].voiceChannel.leave();
           } else {
             setTimeout(() => {
-              module.exports.playMusic(guilds[message.guild.id].queue[0], message, guilds);
+              module.exports.playMusic(guild[message.guild.id].queue[0], message, guild);
             }, 500)
           }
         })
@@ -132,11 +132,11 @@ module.exports = (client) => {
       }
     },
   
-    client.add_to_queue = function (id, message, guilds) {
+    client.add_to_queue = function (id, message, guild) {
       if (module.exports.isYoutube(id)) {
-        guilds[message.guild.id].queue.push(getYoutubeID(id));
+        guild[message.guild.id].queue.push(getYoutubeID(id));
       } else {
-        guilds[message.guild.id].queue.push(id);
+        guild[message.guild.id].queue.push(id);
       }
     },
   
