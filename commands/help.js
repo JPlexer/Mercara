@@ -23,7 +23,11 @@ exports.run = (client, message, args, level) => {
       }
     }
   };
-  
+
+  exports.conf = {
+    aliases: ["h", "halp"]
+  };
+
   exports.help = {
     name: "help",
     category: "System",

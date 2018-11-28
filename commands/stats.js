@@ -13,7 +13,9 @@ exports.run = (client, message, args, level) => { // eslint-disable-line no-unus
 • Discord.js :: v${version}
 • Node       :: ${process.version}`, {code: "asciidoc"});
 };
-
+exports.conf = {
+  aliases: ["status"]
+};
 exports.help = {
   name: "stats",
   category: "Miscelaneous",

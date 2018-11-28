@@ -16,6 +16,10 @@ exports.run = async (client, message, args) => {
     msg.edit(`Pong! It took me ${Date.now() - message.createdTimestamp} ms to respond`);
    }, 500);
   };
+
+  exports.conf = {
+    aliases: ["pingedy"]
+  };
   
   exports.help = {
     name: "ping",
