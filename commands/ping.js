@@ -1,5 +1,4 @@
-const Discord = require("discord.js");
-exports.run = (client, message, args) => {
+exports.run = (Discord, message) => {
     //message.channel.send(`Pong! It took me \${${Date.now() - message.createdTimestamp}} ms\ to respond`);
     embed = new Discord.RichEmbed();
         embed.setColor("#00FFFB");
