@@ -5,8 +5,8 @@ exports.run = (message, guilds) => {
   };
 
   exports.help = {
-    name: "queue",
+    name: "clear",
     category: "Music",
-    description: "Stops the Music for you",
-    usage: "stop"
+    description: "clears the queue, while keeping the current song",
+    usage: "clear"
   };

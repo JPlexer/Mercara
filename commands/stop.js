@@ -5,7 +5,7 @@ exports.run = (message, guilds) => {
   };
 
   exports.help = {
-    name: "queue",
+    name: "stop",
     category: "Music",
     description: "Stops the Music for you",
     usage: "stop"
