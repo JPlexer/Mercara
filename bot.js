@@ -16,7 +16,6 @@ require("./modules/functions.js")(client);
 
 client.commands = new Enmap();
 client.aliases = new Enmap();
-client.on('message', message => {
 
   if (!guild[message.guild.id]) {
     guild[message.guild.id] = {
@@ -28,8 +27,7 @@ client.on('message', message => {
       skipReq: 0,
       skippers: []
     };
-  }
-});
+  };
 
 const init = async () => {
   const cmdFiles = await readdir("./commands/");
