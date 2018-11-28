@@ -4,6 +4,7 @@ const {
 } = require("util");
 const readdir = promisify(require("fs").readdir);
 const Enmap = require("enmap");
+const guilds = {};
 
 const client = new Discord.Client();
 
