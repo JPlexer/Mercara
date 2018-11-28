@@ -19,7 +19,6 @@ exports.run = (client, message, args, level) => {
       let command = args[0];
       if (client.commands.has(command)) {
         command = client.commands.get(command);
-        if (level < client.levelCache[command.conf.permLevel]) return;
         message.channel.send(`= ${command.help.name} = \n${command.help.description}\nusage:: ${command.help.usage}\naliases:: ${command.conf.aliases.join(", ")}\n= ${command.help.name} =`, {code:"asciidoc"});
       }
     }
@@ -28,6 +27,6 @@ exports.run = (client, message, args, level) => {
   exports.help = {
     name: "help",
     category: "System",
-    description: "Displays all the available commands for your permission level.",
+    description: "Displays all the available commands for you.",
     usage: "help [command]"
   };
