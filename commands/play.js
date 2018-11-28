@@ -1,5 +1,5 @@
 const fetchVideoInfo = require("youtube-info");
-exports.run = (message, guilds, args) => {
+exports.run = (client, message, guilds, args) => {
   console.log(message.member.voiceChannel)
     if (message.member.voiceChannel || guilds[message.guild.id].voiceChannel != null) {
       if (guilds[message.guild.id].queue.length > 0 || guilds[message.guild.id].isPlaying) {

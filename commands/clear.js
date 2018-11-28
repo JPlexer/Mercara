@@ -1,4 +1,4 @@
-exports.run = (message, guilds) => {
+exports.run = (client, message, guilds, args) => {
     guilds[message.guild.id].queue = [guilds[message.guild.id].queue.slice(0, 1)];
     guilds[message.guild.id].queueNames = [guilds[message.guild.id].queueNames.slice(0, 1)];
     message.reply(" cleared the Queue!");

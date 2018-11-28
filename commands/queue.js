@@ -1,4 +1,4 @@
-exports.run = (message, guilds) => {
+exports.run = (client, message, guilds, args) => {
     let message2 = "```";
     for (let i = 0; i < guilds[message.guild.id].queueNames.length; i++) {
       const temp = `${i + 1}: ${guilds[message.guild.id].queueNames[i]}${i === 0? "**(Currently Playing)***" : ""}\n`;

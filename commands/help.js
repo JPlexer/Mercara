@@ -1,4 +1,4 @@
-exports.run = (client, message, args, level) => {
+exports.run = (client, message, args) => {
     if (!args[0]) {
       const commandNames = client.commands.keyArray();
       const longest = commandNames.reduce((long, str) => Math.max(long, str.length), 0);

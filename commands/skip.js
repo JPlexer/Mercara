@@ -1,4 +1,4 @@
-exports.run = (message, guilds) => {
+exports.run = (client, message, guilds, args) => {
     client.skip_song(message, guilds);
     message.reply(" is skipping now!");
   };
