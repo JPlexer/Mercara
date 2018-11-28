@@ -6,14 +6,6 @@ exports.run = async (client, message, args) => {
       const evaled = eval(code);
       const clean = await client.clean(client, evaled);
 
-      if (evaled.includes(client.token)) {
-        evaled = evaled.replace(client.token, "THATS MY PRIVESSEESEES NO! AND I MEAN NO! \n\ YOU GET I WILL CALL THE COPS 👮");
-
-        if (evaled.includes(client.token)) {
-            evaled = evaled.replace(client.token, "THATS MY PRIVESSEESEES NO! AND I MEAN NO! \n\ YOU GET I WILL CALL THE COPS 👮");
-        }
-    }
-
     let embed = new Discord.RichEmbed()
         .addField(`:arrow_down:Input`, "***```" + code + "```***", true)
         .addField(`:arrow_up:Output`, `\`\`\`js\n${clean}\n\`\`\``, )
