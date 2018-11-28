@@ -10,8 +10,9 @@
         //});
         //return true;
 //}
-exports.run = async (client, message, args, level) => {
+exports.run = async (client, message, args) => {
     const msg = await message.channel.send("Ping?");
+    setTimeout(2000);
     msg.edit(`Pong! It took me \${${Date.now() - message.createdTimestamp}} ms\ to respond`);
   };
   
