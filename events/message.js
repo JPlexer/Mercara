@@ -12,7 +12,7 @@ module.exports = async (client, message) => {
   }
 
   if (!guild[message.guild.id]) {
-    guilds[message.guild.id] = {
+    guild[message.guild.id] = {
       queue: [],
       queueNames: [],
       isPlaying: false,
