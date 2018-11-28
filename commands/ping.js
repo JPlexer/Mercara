@@ -14,7 +14,7 @@ exports.run = async (client, message, args) => {
     const msg = await message.channel.send("Ping?");
     setTimeout(function() {
     msg.edit(`Pong! It took me ${Date.now() - message.createdTimestamp} ms to respond`);
-   }, 2000);
+   }, 500);
   };
   
   exports.help = {
