@@ -4,7 +4,7 @@ const {
 } = require("util");
 const readdir = promisify(require("fs").readdir);
 const Enmap = require("enmap");
-const guilds = {};
+//const guild = {};
 
 const client = new Discord.Client();
 
@@ -18,8 +18,8 @@ client.commands = new Enmap();
 client.aliases = new Enmap();
 client.on('message', message => {
 
-  if (!guilds[message.guild.id]) {
-    guilds[message.guild.id] = {
+  if (!guild[message.guild.id]) {
+    guild[message.guild.id] = {
       queue: [],
       queueNames: [],
       isPlaying: false,
