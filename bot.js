@@ -13,6 +13,16 @@ client.logger = require("./modules/Logger");
 
 require("./modules/functions.js")(client);
 
+guilds[message.guild.id] = {
+  queue: [],
+  queueNames: [],
+  isPlaying: false,
+  dispatcher: null,
+  voiceChannel: null,
+  skipReq: 0,
+  skippers: []
+};
+
 client.commands = new Enmap();
 client.aliases = new Enmap();
 
