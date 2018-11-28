@@ -4,4 +4,15 @@ module.exports = (client) => {
         `${client.config.prefix}help| ${client.config.botver}`, {
         type: "LISTENING"
       });
+      if (!guild[message.guild.id]) {
+        guild[message.guild.id] = {
+          queue: [],
+          queueNames: [],
+          isPlaying: false,
+          dispatcher: null,
+          voiceChannel: null,
+          skipReq: 0,
+          skippers: []
+        };
+      };  
   }
