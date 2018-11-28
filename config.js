@@ -2,6 +2,7 @@
   module.exports = {
     token: process.env.BOT_TOKEN,
     prefix: "mb:",
-    botver: "b.1.0.8",
+    botver: "b.2.0.0",
+    botowner: "348065394520621067",
     branch: "Merbara"
   }
