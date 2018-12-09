@@ -4,4 +4,4 @@ module.exports = (client) => {
         `${client.config.prefix}help| ${client.config.botver}`, {
         type: "LISTENING"
       });
-  }
+}

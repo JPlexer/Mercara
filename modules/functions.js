@@ -3,6 +3,7 @@ const request = require("request");
 const getYouTubeID = require("get-youtube-id");
 const yt_api_key = process.env.YT_TOKEN;
 module.exports = (client) => {
+client.guildm = {};
 
 
     /*
@@ -55,9 +56,6 @@ module.exports = (client) => {
           props.init(client);
         }
         client.commands.set(props.help.name, props);
-        props.conf.aliases.forEach(alias => {
-          client.aliases.set(alias, props.help.name);
-        });
         return false;
       } catch (e) {
         return `Unable to load command ${commandName}: ${e}`;
@@ -86,61 +84,61 @@ module.exports = (client) => {
       return false;
     };
 
-    client.skip_song = function (message, guild) {
-      client.guild[message.guild.id].dispatcher.end();
+    client.isYoutube = function (str) {
+      return str.toString().toLowerCase().includes("youtube.com");
+    },
+
+    client.skip_song = function (message, guild, client) {
+      client.guildm[message.guild.id].dispatcher.end();
     },
   
-    client.playMusic = function (id, message, guild) {
-      client.guild[message.guild.id].voiceChannel = message.member.voiceChannel;
+    client.playMusic = function (id, message, guild, client) {
+      client.guildm[message.guild.id].voiceChannel = message.member.voiceChannel;
   
   
   
-      client.guild[message.guild.id].voiceChannel.join().then(connection => {
+      client.guildm[message.guild.id].voiceChannel.join().then(connection => {
         stream = ytdl(`https://www.youtube.com/watch?v=${id}`, );
-        client.guild[message.guild.id].skipReq = 0;
-        client.guild[message.guild.id].skippers = [];
+        client.guildm[message.guild.id].skipReq = 0;
+        client.guildm[message.guild.id].skippers = [];
   
-        client.guild[message.guild.id].dispatcher = connection.playStream(stream);
-        client.guild[message.guild.id].dispatcher.on('end', () => {
-          client.guild[message.guild.id].skipReq = 0;
-          client.guild[message.guild.id].skippers = [];
-          client.guild[message.guild.id].queue.shift();
-          client.guild[message.guild.id].queueNames.shift();
-          if (client.guild[message.guild.id].queue.length === 0) {
-            client.guild[message.guild.id].queue = [];
-            client.guild[message.guild.id].queueNames = [];
-            client.guild[message.guild.id].newsongs = [];
-            client.guild[message.guild.id].isPlaying = false;
-            client.guild[message.guild.id].voiceChannel.leave();
+        client.guildm[message.guild.id].dispatcher = connection.playStream(stream);
+        client.guildm[message.guild.id].dispatcher.on('end', () => {
+          client.guildm[message.guild.id].skipReq = 0;
+          client.guildm[message.guild.id].skippers = [];
+          client.guildm[message.guild.id].queue.shift();
+          client.guildm[message.guild.id].queueNames.shift();
+          if (client.guildm[message.guild.id].queue.length === 0) {
+            client.guildm[message.guild.id].queue = [];
+            client.guildm[message.guild.id].queueNames = [];
+            client.guildm[message.guild.id].newsongs = [];
+            client.guildm[message.guild.id].isPlaying = false;
+            client.guildm[message.guild.id].voiceChannel.leave();
           } else {
             setTimeout(() => {
-              module.exports.playMusic(client.guild[message.guild.id].queue[0], message, guild);
+              client.playMusic(client.guildm[message.guild.id].queue[0], message, guild);
             }, 500)
           }
         })
       });
     },
   
-    client.getID = function (str, cb) {
-      if (module.exports.isYoutube(str)) {
+    client.getID = function (str, client, cb) {
+      if (client.isYoutube(str)) {
         cb(getYouTubeID(str));
       } else {
-        module.exports.search_video(str, id => {
+        client.search_video(str, id => {
           cb(id);
         });
       }
     },
   
-    client.add_to_queue = function (id, message, guild) {
-      if (module.exports.isYoutube(id)) {
-        client.guild[message.guild.id].queue.push(getYoutubeID(id));
+    client.add_to_queue = function (id, message, client) {
+      if (client.isYoutube(id)) {
+        client.guildm[message.guild.id].queue.push(getYoutubeID(id));
       } else {
-        client.guild[message.guild.id].queue.push(id);
+        client.guildm[message.guild.id].queue.push(id);
       }
-    },
-  
-    client.isYoutube = function (str) {
-      return str.toLowerCase().includes("youtube.com");
     },
   
     client.search_video = function (query, callback) {
@@ -153,9 +151,9 @@ module.exports = (client) => {
       });
     },
 
-    client.guild = function(id, message, guild) {
-    if (!client.guild[message.guild.id]) {
-      client.guild[message.guild.id] = {
+    /*client.guildm = function(client, id, message, guild) {
+    if (!client.guildm[message.guild.id]) {
+      client.guildm[message.guild.id] = {
         queue: [],
         queueNames: [],
         isPlaying: false,
@@ -165,7 +163,7 @@ module.exports = (client) => {
         skippers: []
       };
     }
-  },
+  },/*
     /* MISCELANEOUS NON-CRITICAL FUNCTIONS */
     
     // EXTENDING NATIVE TYPES IS BAD PRACTICE. Why? Because if JavaScript adds this

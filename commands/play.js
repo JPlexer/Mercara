@@ -1,28 +1,27 @@
 const fetchVideoInfo = require("youtube-info");
-exports.run = (client, message, guild, args) => {
-  console.log(client.guild[message.guild.id].queue)
-    if (message.member.voiceChannel || client.guild[message.guild.id].voiceChannel != null) {
-      if (client.guild[message.guild.id].queue.length > 0 || client.guild[message.guild.id].isPlaying) {
-        client.getID(args, id => {
-          client.add_to_queue(id, message, guild);
+exports.run = (client, message, args, guild) => {
+    if (message.member.voiceChannel || client.guildm[message.guild.id].voiceChannel != null) {
+      if (client.guildm[message.guild.id].queue.length > 0 || client.guildm[message.guild.id].isPlaying) {
+        client.getID(args, client, id => {
+          client.add_to_queue(id, message, client);
           fetchVideoInfo(id, (err, {
             title
           }) => {
             if (err) throw new Error(err);
             message.reply(` your Requested Song, **${title}** was added to the Queue!`);
-            client.guild[message.guild.id].queueNames.push(title);
+            client.guildm[message.guild.id].queueNames.push(title);
           });
         });
       } else {
         isPlaying = true;
-        client.getID(args, id => {
-          client.guild[message.guild.id].queue.push(id);
-          client.playMusic(id, message, guild);
+        client.getID(args, client, id => {
+          client.guildm[message.guild.id].queue.push(id);
+          client.playMusic(id, message, guild, client);
           fetchVideoInfo(id, (err, {
             title
           }) => {
             if (err) throw new Error(err);
-            client.guild[message.guild.id].queueNames.push(title);
+            client.guildm[message.guild.id].queueNames.push(title);
 
             message.reply(` your Requested Song, **${title}** is now Playing!`);
           })

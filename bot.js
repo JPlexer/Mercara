@@ -14,8 +14,6 @@ client.logger = require("./modules/Logger");
 require("./modules/functions.js")(client);
 
 client.commands = new Enmap();
-client.aliases = new Enmap();
-
 
 const init = async () => {
   const cmdFiles = await readdir("./commands/");

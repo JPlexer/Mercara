@@ -3,16 +3,8 @@
 // goes `client, other, args` when this function is run.
 
 module.exports = async (client, message) => {
-  if (message.author.bot) return;
-  const guild = {};
-
-  const prefixMention = new RegExp(`^<@!?${client.user.id}>( |)$`);
-  if (message.content.match(prefixMention)) {
-    return message.reply(`My prefix is \`${client.config.prefix}\``);
-  }
-
-  if (!guild[message.guild.id]) {
-    guild[message.guild.id] = {
+  if (!client.guildm[message.guild.id]) {
+    client.guildm[message.guild.id] = {
       queue: [],
       queueNames: [],
       isPlaying: false,
@@ -21,6 +13,13 @@ module.exports = async (client, message) => {
       skipReq: 0,
       skippers: []
     };
+}
+
+  if (message.author.bot) return;
+
+  const prefixMention = new RegExp(`^<@!?${client.user.id}>( |)$`);
+  if (message.content.match(prefixMention)) {
+    return message.reply(`My prefix is \`${client.config.prefix}\``);
   }
 
   if (message.content.indexOf(client.config.prefix) !== 0) return;
