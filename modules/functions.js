@@ -63,7 +63,6 @@ module.exports = (client) => {
         return `Unable to load command ${commandName}: ${e}`;
       }
     };
-  
     client.unloadCommand = async (commandName) => {
       let command;
       if (client.commands.has(commandName)) {
@@ -88,34 +87,34 @@ module.exports = (client) => {
     };
 
     client.skip_song = function (message, guild) {
-      guild[message.guild.id].dispatcher.end();
+      client.guild[message.guild.id].dispatcher.end();
     },
   
     client.playMusic = function (id, message, guild) {
-      guild[message.guild.id].voiceChannel = message.member.voiceChannel;
+      client.guild[message.guild.id].voiceChannel = message.member.voiceChannel;
   
   
   
-      guild[message.guild.id].voiceChannel.join().then(connection => {
+      client.guild[message.guild.id].voiceChannel.join().then(connection => {
         stream = ytdl(`https://www.youtube.com/watch?v=${id}`, );
-        guild[message.guild.id].skipReq = 0;
-        guild[message.guild.id].skippers = [];
+        client.guild[message.guild.id].skipReq = 0;
+        client.guild[message.guild.id].skippers = [];
   
-        guild[message.guild.id].dispatcher = connection.playStream(stream);
-        guild[message.guild.id].dispatcher.on('end', () => {
-          guild[message.guild.id].skipReq = 0;
-          guild[message.guild.id].skippers = [];
-          guild[message.guild.id].queue.shift();
-          guild[message.guild.id].queueNames.shift();
-          if (guild[message.guild.id].queue.length === 0) {
-            guild[message.guild.id].queue = [];
-            guild[message.guild.id].queueNames = [];
-            guild[message.guild.id].newsongs = [];
-            guild[message.guild.id].isPlaying = false;
-            guild[message.guild.id].voiceChannel.leave();
+        client.guild[message.guild.id].dispatcher = connection.playStream(stream);
+        client.guild[message.guild.id].dispatcher.on('end', () => {
+          client.guild[message.guild.id].skipReq = 0;
+          client.guild[message.guild.id].skippers = [];
+          client.guild[message.guild.id].queue.shift();
+          client.guild[message.guild.id].queueNames.shift();
+          if (client.guild[message.guild.id].queue.length === 0) {
+            client.guild[message.guild.id].queue = [];
+            client.guild[message.guild.id].queueNames = [];
+            client.guild[message.guild.id].newsongs = [];
+            client.guild[message.guild.id].isPlaying = false;
+            client.guild[message.guild.id].voiceChannel.leave();
           } else {
             setTimeout(() => {
-              module.exports.playMusic(guild[message.guild.id].queue[0], message, guild);
+              module.exports.playMusic(client.guild[message.guild.id].queue[0], message, guild);
             }, 500)
           }
         })
@@ -134,9 +133,9 @@ module.exports = (client) => {
   
     client.add_to_queue = function (id, message, guild) {
       if (module.exports.isYoutube(id)) {
-        guild[message.guild.id].queue.push(getYoutubeID(id));
+        client.guild[message.guild.id].queue.push(getYoutubeID(id));
       } else {
-        guild[message.guild.id].queue.push(id);
+        client.guild[message.guild.id].queue.push(id);
       }
     },
   
@@ -153,6 +152,20 @@ module.exports = (client) => {
         }
       });
     },
+
+    client.guild[message.guild.id]= function() {
+    if (!client.guild[message.guild.id]) {
+      client.guild[message.guild.id] = {
+        queue: [],
+        queueNames: [],
+        isPlaying: false,
+        dispatcher: null,
+        voiceChannel: null,
+        skipReq: 0,
+        skippers: []
+      };
+    }
+  },
     /* MISCELANEOUS NON-CRITICAL FUNCTIONS */
     
     // EXTENDING NATIVE TYPES IS BAD PRACTICE. Why? Because if JavaScript adds this
