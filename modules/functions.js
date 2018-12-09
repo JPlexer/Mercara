@@ -153,7 +153,7 @@ module.exports = (client) => {
       });
     },
 
-    client.guild[message.guild.id]= function() {
+    client.guild = function(id, message, guild) {
     if (!client.guild[message.guild.id]) {
       client.guild[message.guild.id] = {
         queue: [],
