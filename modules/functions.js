@@ -102,7 +102,7 @@ client.guildm = {};
         client.guildm[message.guild.id].skipReq = 0;
         client.guildm[message.guild.id].skippers = [];
   
-        //client.guildm[message.guild.id].dispatcher = connection.playStream(stream);
+        client.guildm[message.guild.id].dispatcher = connection.playStream(stream);
         client.guildm[message.guild.id].dispatcher.on('end', () => {
           client.guildm[message.guild.id].skipReq = 0;
           client.guildm[message.guild.id].skippers = [];
