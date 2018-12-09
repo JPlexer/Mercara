@@ -1,10 +1,9 @@
 exports.run = (client, message, args) => { // eslint-disable-line no-unused-vars
-  message.channel.send(`= STATISTICS =
+  message.channel.send(`= SERVERINFO =
 • Server Name:: ${message.guild.name}
 • Created At :: ${message.guild.createdAt}
 • Users      :: ${message.guild.memberCount}
-• Joined At  :: ${message.member.joinedAt}
-• Channels   :: ${message.guild.channels}`, {code: "asciidoc"});
+• Joined At  :: ${message.member.joinedAt}`, {code: "asciidoc"});
 };
 
 exports.help = {
