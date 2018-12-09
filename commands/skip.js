@@ -1,5 +1,5 @@
 exports.run = (client, message, args, guild) => {
-    client.skip_song(message, guild, client);
+    client.guildm[message.guild.id].dispatcher.end();
     message.reply(" is skipping now!");
   };
 
