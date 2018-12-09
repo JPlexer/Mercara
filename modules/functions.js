@@ -116,7 +116,7 @@ client.guildm = {};
             client.guildm[message.guild.id].voiceChannel.leave();
           } else {
             setTimeout(() => {
-              client.playMusic(client.guildm[message.guild.id].queue[0], message, guild);
+              client.playMusic(client.guildm[message.guild.id].queue[0], message, guild, client);
             }, 500)
           }
         })
