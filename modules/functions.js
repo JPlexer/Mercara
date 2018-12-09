@@ -88,7 +88,7 @@ client.guildm = {};
       return str.toString().toLowerCase().includes("youtube.com");
     },
 
-    client.skip_song = function (message, guild, client) {
+    client.skip_song = function (id, message, guild, client) {
       client.guildm[message.guild.id].dispatcher.end();
     },
   
