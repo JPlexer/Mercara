@@ -11,6 +11,7 @@ module.exports = async (client, message) => {
       dispatcher: null,
       voiceChannel: null,
       skipReq: 0,
+      dispatcher: connection.playStream(stream),
       skippers: []
     };
 }
