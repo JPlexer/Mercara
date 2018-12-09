@@ -151,7 +151,7 @@ client.guildm = {};
       });
     },
 
-    /*client.guildm = function(client, id, message, guild) {
+    client.guildm = function(client, id, message, guild) {
     if (!client.guildm[message.guild.id]) {
       client.guildm[message.guild.id] = {
         queue: [],
@@ -163,7 +163,7 @@ client.guildm = {};
         skippers: []
       };
     }
-  },/*
+  },
     /* MISCELANEOUS NON-CRITICAL FUNCTIONS */
     
     // EXTENDING NATIVE TYPES IS BAD PRACTICE. Why? Because if JavaScript adds this
