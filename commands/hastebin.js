@@ -1,3 +1,4 @@
+const snekfetch = require("snekfetch");
 exports.run = (client, message, args) => {
     if (!args[0]) return message.channel.send(":x: What do you want to post to Hastebin? Put it after the Command!");
         snekfetch.post(`https://hastebin.com/documents`)
