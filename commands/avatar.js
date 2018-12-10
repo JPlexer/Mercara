@@ -9,7 +9,7 @@ exports.run = (client, message, args) => {
     if (message.mentions.users.size == 0) {
         message.reply("No results! You must ping someone (TIP: If you want your Pic, try pinging yourself)");
     } else {
-        message.reply(message.mentions.users.displayAvatarURL);
+        message.reply(message.mentions.users.AvatarURL);
 }
 }
   
