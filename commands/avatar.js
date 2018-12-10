@@ -1,9 +1,9 @@
-exports.run = (client, msg, args) => {
-    let avatar = msg.mentions.users.size ? msg.mentions.users.avatarURL() : msg.author.avatarURL();
-    if (msg.mentions.users.size > 0) {
-        msg.channel.send(`Avatar for, **${msg.mentions.users.username}:**\n${avatar}`);
+exports.run = (client, message, args) => {
+    let avatar = message.mentions.users.size ? message.mentions.users.avatarURL() : message.author.avatarURL();
+    if (message.mentions.users.size > 0) {
+        message.channel.send(`Avatar for, **${message.mentions.users.username}:**\n${avatar}`);
     } else {
-      msg.channel.send(`Avatar for, **${msg.author.username}:**\n${avatar}`);
+      message.channel.send(`Avatar for, **${message.author.username}:**\n${avatar}`);
     }
 }
   
