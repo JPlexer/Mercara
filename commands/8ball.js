@@ -1,6 +1,9 @@
 const Discord = require("discord.js");
 exports.run = async (client, message, args) => {
-    var rnd = getrandomint(5);
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * Math.floor(max));
+      }
+    var rnd = getRandomInt(5);
     console.log(rnd);
     if(rnd===1) message.channel.send("No.");
     else if(rnd===2) message.channel.send("Not Probable.");
