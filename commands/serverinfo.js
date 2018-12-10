@@ -9,6 +9,6 @@ exports.run = (client, message, args) => { // eslint-disable-line no-unused-vars
 exports.help = {
   name: "serverinfo",
   category: "Miscelaneous",
-  description: "Gives some useful server info's",
+  description: "Gives some useful server infos",
   usage: "serverinfo"
 };
