@@ -16,7 +16,7 @@ exports.run = (client, message, args) => { // eslint-disable-line no-unused-vars
 
 exports.help = {
   name: "stats",
-  category: "Miscelaneous",
+  category: "System",
   description: "Gives some useful bot statistics",
   usage: "stats"
 };

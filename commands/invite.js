@@ -4,7 +4,7 @@ exports.run = async (client, message, args) => {
   
   exports.help = {
     name: "invite",
-    category: "Miscelaneous",
+    category: "General",
     description: "Send my awesome invite link",
     usage: "invite"
   };

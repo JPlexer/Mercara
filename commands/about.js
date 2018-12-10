@@ -8,7 +8,7 @@ message.channel.send(`= ABOUT =
   
   exports.help = {
     name: "about",
-    category: "Miscelaneous",
+    category: "General",
     description: "About this Bot",
     usage: "about"
   };

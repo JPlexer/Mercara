@@ -10,7 +10,7 @@ exports.run = (client, message, args) => {
   
   exports.help = {
     name: "hastebin",
-    category: "Miscelaneous",
+    category: "General",
     description: "Upload text to hastebin",
     usage: "hastebin [text]"
   };
